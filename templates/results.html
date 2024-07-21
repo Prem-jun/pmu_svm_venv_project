@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model Results</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .fixed-bottom-button {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: #f8f9fa; /* Light gray background */
+        }
+        .container {
+            padding-bottom: 60px; /* Extra space to ensure content is not hidden behind the fixed button */
+        }
+
+        .footer-bar {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .footer-bar input, .footer-bar label {
+            margin: 5px;            
+        }
+        .footer-bar a {
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        .logo {
+            height: 100px; /* Adjust the size as needed */
+            margin-right: 20px;
+            margin-left: 20px;
+        }
+        .header-text {
+            text-align: center;
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+        .sub-header-text {
+            text-align: center;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+        .topic {
+            text-align: left;
+            font-size: 1.5em;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mb-2">
+            <img src="{{url_for('static', filename='LOGO01_nxpo.png')}}" alt="Logo 1" class="logo">
+            <img src="{{url_for('static', filename='LOGO02.png')}}" alt="Logo 2" class="logo">
+            <img src="{{url_for('static', filename='LogoKKU_thai.png')}}" alt="Logo 3" class="logo">
+        </div>
+        <!-- Thai Sentence -->
+        <div class="header-text">
+            โครงการการพัฒนาตัวแบบเชิงคณิตศาสตร์และการหาค่าเหมาะสมที่สุดสำหรับกระบวนการเรียนรู้ของโครงข่ายประสาทเทียมและการประยุกต์ใช้
+        </div>
+        <p></p> 
+
+        <div class="sub-header-text">
+            ภายใต้แผนงานการริเริ่มการวิจัยขั้นแนวหน้าประเทศไทย <br/>
+            โปรแกรมที่ 5 ส่งเสริมการวิจัยขั้นแนวหน้าและการวิจัยพื้นฐานที่ประเทศไทยมีศักยภาพ  <br/>
+            ประจำปีงบประมาณ 2565
+        </div>    
+        <p></p>    
+        <p></p> 
+
+        <div class="topic">Model Training and Testing Details</div>
+        <p>All data: {{ total_size }} sample with {{ n_feature }}  features</p>
+        <!-- <p>Train Set Size: {{ train_size }} ({{ train_percent }}% of total)</p>
+        <p>Test Set Size: {{ test_size }} ({{ test_percent }}% of total)</p> --> 
+            
+        <div>{{ data_split_plot|safe }}</div>
+
+        <div class="topic">Data sample</div>
+        <div>{{ df_head|safe }}</div>  
+
+        <div class="topic">Test performance</div>
+        <div>{{ confusion_matrix_plot|safe }}</div>
+
+        <!-- <div class="topic">Test ROC</div>
+        <div>{{ roc_plot_html|safe }}</div> -->
+
+        <div class="topic">Training accuracy</div>
+        <div>{{ training_accuracy_plot|safe }}</div>
+
+        <div class="topic">Training hinge</div>
+        <div>{{ training_hinge_plot|safe }}</div>
+
+        <div class="topic">Runtimes</div>
+        <div>{{ runtimes_plot|safe }}</div>
+        
+       
+    </div>
+
+    <div class="footer-bar">
+        <a href="/">Back to Home</a>
+        <a href="{{ url_for('download_model', filename=model_filename) }}" class="btn btn-success">Download the Trained Model</a>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>
