@@ -10,6 +10,7 @@ dacite==1.8.1
 Flask==3.0.3
 Flask-WTF==1.2.1
 fonttools==4.53.1
+gunicorn==22.0.0
 htmlmin==0.1.12
 idna==3.7
 ImageHash==4.3.1
